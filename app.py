@@ -208,10 +208,12 @@ else:
                 for file in file_paths:
                     zip.write(file)
 
-with open('Archive.zip', "rb") as f:
-    bytes = f.read()
-b64 = base64.b64encode(bytes).decode()
-href = f'<a href="data:file/zip;base64,{b64}" download=\'Archive.zip\'>\
-        Click to download\
-    </a>'
-st.markdown(href, unsafe_allow_html=True)
+button=st.button("Click here to download")
+if button:
+    with open('Archive.zip', "rb") as f:
+        bytes = f.read()
+    b64 = base64.b64encode(bytes).decode()
+    href = f'<a href="data:file/zip;base64,{b64}" download=\'Archive.zip\'>\
+            Click to download\
+        </a>'
+    st.markdown(href, unsafe_allow_html=True)
